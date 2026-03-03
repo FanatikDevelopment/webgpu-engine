@@ -4,18 +4,51 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "@nx/js": "22.5.1",
+    "@eslint/js": "^9.8.0",
+    "@nx/esbuild": "22.5.1",
+    "@nx/eslint": "22.5.1",
+    "@nx/eslint-plugin": "22.5.1",
+    "@nx/js": "22.5.3",
+    "@nx/node": "22.5.3",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
+    "@types/node": "20.19.9",
+    "esbuild": "^0.19.2",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^10.0.0",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "22.5.1",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.40.0",
+    "verdaccio": "^6.0.5"
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "packages/*",
+    "apps/*",
+    "libs/scene-graph",
+    "libs/render-api",
+    "libs/graphics-hal",
+    "libs/webgpu-backend"
+  ],
+  "dependencies": {
+    "@kmamal/gpu": "^0.2.1",
+    "@kmamal/sdl": "^0.11.13"
+  },
+  "nx": {
+    "includedScripts": [],
+    "targets": {
+      "local-registry": {
+        "executor": "@nx/js:verdaccio",
+        "options": {
+          "port": 4873,
+          "config": ".verdaccio/config.yml",
+          "storage": "tmp/local-registry/storage"
+        }
+      }
+    }
+  }
 }

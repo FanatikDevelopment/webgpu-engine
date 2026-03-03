@@ -2,5 +2,21 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./apps/native-demo"
+    },
+    {
+      "path": "./libs/scene-graph"
+    },
+    {
+      "path": "./libs/render-api"
+    },
+    {
+      "path": "./libs/graphics-hal"
+    },
+    {
+      "path": "./libs/webgpu-backend"
+    }
+  ]
 }
